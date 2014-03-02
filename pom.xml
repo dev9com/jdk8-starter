@@ -126,6 +126,10 @@ report generation. -->
             </plugin>
 
             <!-- Default Cobertura code coverage report. -->
+            <!-- Code coverage tools (e.g. JaCoCo, etc. depend on ASM5, which is not expected to be
+            released until JDK 1.8 is final.  See:
+            http://mail.ow2.org/wws/arc/asm/2013-11/msg00005.html
+            -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
