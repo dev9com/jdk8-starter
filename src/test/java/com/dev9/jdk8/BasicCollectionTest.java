@@ -12,15 +12,15 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 public class BasicCollectionTest {
 
-    int i = 0;
 
+    int i = 0; // Bad runnable? Exposes side effect here?
 
     @Test
     public void runnableExample() {
 
         assertThat(i).isEqualTo(0);
 
-        Runnable r = () -> i++;
+        Runnable r = () -> i++; // Bad runnable? Exposes side effect here?
 
         r.run();
 
@@ -29,7 +29,7 @@ public class BasicCollectionTest {
 
     @Test
     public void comparatorExample() {
-        Comparator<String> c = (a, b) -> a.toString().compareTo(b.toString());
+        Comparator<String> c = (a, b) -> a.compareTo(b);
 
         List<String> names = Lists.newArrayList("alpha", "gamma", "beta", "zeta");
 
@@ -76,6 +76,7 @@ public class BasicCollectionTest {
         assertThat(wreck.creator.name).isEqualTo(starship.name);
     }
 
+    @Test
     //    Supplier: Provide an instance of a T (such as a factory)
     public void supplierExample() {
 
@@ -89,6 +90,7 @@ public class BasicCollectionTest {
         assertThat(ship.name).contains("K'");
     }
 
+    @Test
     //    UnaryOperator: A unary operator from T -> T
     public void unaryOperatorExample() {
 
@@ -108,25 +110,33 @@ public class BasicCollectionTest {
     Starship wimpy = new Starship();
     Starship normalGuy = new Starship("Lagrange");
 
-    private List<Starship> getSomeShips()
-    {
+    private List<Starship> getSomeShips() {
         toughGuy.superPower = (a) -> a.shields = a.shields + 5;
         normalGuy.superPower = (a) -> a.shields++;
 
         return Lists.newArrayList(toughGuy, wimpy, normalGuy);
     }
 
+    @Test
     public void newCollectionForEachWithLambdaExample() {
         List<Starship> ships = getSomeShips();
 
+
         // Fancy new collection method
-        ships.forEach((ship) -> ship.superPower.accept(ship));
+        ships.forEach((ship) -> {
+            if (ship.superPower != null)  // No function assigned to wimpy!
+                ship.superPower.accept(ship);
+        });
 
         assertThat(toughGuy.shields).isEqualTo(5);
+
         assertThat(wimpy.shields).isEqualTo(0);
+
         assertThat(normalGuy.shields).isEqualTo(1);
+
     }
 
+    @Test
     public void newMethodOperator() {
 
         List<Starship> ships = getSomeShips();
