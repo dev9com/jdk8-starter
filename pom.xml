@@ -97,6 +97,7 @@ report generation. -->
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
         <!-- Excellent assertion library - much better than the JUnit defaults. -->
         <dependency>
             <groupId>org.easytesting</groupId>
@@ -109,6 +110,14 @@ report generation. -->
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>16.0.1</version>
+        </dependency>
+
+        <!-- Benchmark rule for JUnit -->
+        <dependency>
+            <groupId>com.carrotsearch</groupId>
+            <artifactId>junit-benchmarks</artifactId>
+            <version>0.7.2</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -172,9 +181,9 @@ report generation. -->
             http://mail.ow2.org/wws/arc/asm/2013-11/msg00005.html
             -->
             <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>cobertura-maven-plugin</artifactId>-->
-                <!--<version>2.6</version>-->
+            <!--<groupId>org.codehaus.mojo</groupId>-->
+            <!--<artifactId>cobertura-maven-plugin</artifactId>-->
+            <!--<version>2.6</version>-->
             <!--</plugin>-->
 
         </plugins>
