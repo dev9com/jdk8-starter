@@ -10,7 +10,7 @@ import java.util.function.*;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-public class BasicCollectionTest {
+public class BasicLambdaTest {
 
 
     int i = 0; // Bad runnable? Exposes side effect here?
