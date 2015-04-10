@@ -32,7 +32,8 @@ public class ParallelStreamTest {
         ForkJoinPool forkJoinPool = new ForkJoinPool(2);
         List<Integer> primes = forkJoinPool.submit(
                 () ->
-                        IntStream.range(2, 1_000_000).parallel()
+                        IntStream.range(2, 1_000_000)
+                                .parallel()
                                 .boxed()
                                 .filter(Prime::isPrime)
                                 .collect(Collectors.toList())
