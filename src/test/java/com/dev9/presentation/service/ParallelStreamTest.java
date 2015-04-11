@@ -25,8 +25,6 @@ public class ParallelStreamTest {
         assertThat(primes.size()).isEqualTo(78498);
     }
 
-
-
     @Test
     public void test_parallel_inline() {
 
