@@ -1,9 +1,7 @@
 package com.dev9.presentation.service;
 
 import java.util.Map;
-import java.util.function.Function;
 
-import com.dev9.presentation.model.DecoratedPerson;
 import com.dev9.presentation.model.Person;
 import com.dev9.presentation.support.CallError;
 import com.dev9.presentation.support.CallResult;
@@ -28,21 +26,19 @@ public class PersonService {
     }
 
     public CallResult<Person> getPerson(Long id) {
-
-        Person person = personRepository.getOrDefault(id, null);
+        Person person = personRepository.get(id);
         if (person == null) {
             return CallResult.error(new CallError("http://person.service/url", "Person not in repository"));
         }
         return CallResult.ok(person);
     }
 
-    public CallResult<DecoratedPerson> getDecoratedPerson(Long id, Function<Person, DecoratedPerson> decorator) {
-
-        Person person = personRepository.getOrDefault(id, null);
+    public CallResult<Person> getPersonThrowsCheckedException(Long id) throws Exception {
+        Person person = personRepository.get(id);
         if (person == null) {
-            return CallResult.error(new CallError("http://person.service/url", "Person not in repository"));
+            throw new Exception("Person not found");
         }
-        return CallResult.ok(decorator.apply(person));
+        return CallResult.ok(person);
     }
 
 }

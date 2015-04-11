@@ -1,5 +1,7 @@
 package com.dev9.presentation.model;
 
+import java.util.function.Function;
+
 public class Person {
 
     private long id;
@@ -22,6 +24,10 @@ public class Person {
     public Person setId(long id) {
         this.id = id;
         return this;
+    }
+
+    public String getName(Function<Person, String> arranger) {
+        return arranger.apply(this);
     }
 
     public String getFirstName() {

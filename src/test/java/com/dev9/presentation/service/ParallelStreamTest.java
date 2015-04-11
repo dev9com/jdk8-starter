@@ -15,7 +15,18 @@ import org.junit.Test;
 public class ParallelStreamTest {
 
     @Test
-    public void test_in_line() {
+    public void test_stream_inline() {
+
+        final List<Integer> primes = IntStream.range(2, 1_000_000)
+                .boxed()
+                .filter(Prime::isPrime)
+                .collect(Collectors.toList());
+
+        assertThat(primes.size()).isEqualTo(78498);
+    }
+
+    @Test
+    public void test_parallel_inline() {
 
         final List<Integer> primes = IntStream.range(2, 1_000_000)
                 .boxed()
