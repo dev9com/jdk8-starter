@@ -39,6 +39,11 @@ public class CallResult<T> {
         return new CallResult<>(error);
     }
 
+    public boolean isError() {
+        return error != null;
+    }
+
+
     public T get() {
         return payload;
     }
