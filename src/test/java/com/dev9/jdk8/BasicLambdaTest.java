@@ -8,7 +8,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class BasicLambdaTest {
 
