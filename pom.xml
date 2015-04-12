@@ -145,6 +145,7 @@ report generation. -->
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>1.7.0</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
