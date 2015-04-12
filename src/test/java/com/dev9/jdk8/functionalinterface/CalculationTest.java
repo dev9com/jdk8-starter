@@ -48,7 +48,7 @@ public class CalculationTest {
     }
 
     @Test
-    public void solveIsCustomizedForAlternativeCalculation(){
+    public void solveIsCustomizedInAlternativeCalculation(){
 
         double randomResult = randomCalculation.solve(TEST_VALUE);
         double alternativeResult = alternativeCalculation.solve(TEST_VALUE);
