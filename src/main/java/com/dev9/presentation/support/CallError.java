@@ -21,7 +21,6 @@ public class CallError {
     }
 
     public CallError(String developerMessage) {
-        this.url = url;
         this.developerMessage = developerMessage;
     }
 
