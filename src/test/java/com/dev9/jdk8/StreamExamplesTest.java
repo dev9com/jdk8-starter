@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamExamplesTest {
 
@@ -62,7 +62,7 @@ public class StreamExamplesTest {
     @Test
     public void badParallelStreamStatefulExample() {
 
-        // Note the use of syncronizedList. Without this, the forEach will break. */
+        // Note the use of synchronizedList. Without this, the forEach will break. */
         List<Integer> oddOnly = Collections.synchronizedList(new ArrayList<>());
 
         // You aren't really supposed to do this - the oddOnly list is considered

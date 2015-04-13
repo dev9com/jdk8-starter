@@ -1,12 +1,12 @@
 package com.dev9.presentation.service;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-
 import java.util.function.Function;
 
 import org.junit.Test;
 
 import com.dev9.presentation.model.Person;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PersonServiceTest {
 

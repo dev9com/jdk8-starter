@@ -1,8 +1,5 @@
 package com.dev9.presentation.service;
 
-
-import static org.fest.assertions.api.Assertions.assertThat;
-
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
@@ -10,6 +7,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class ParallelStreamTest {
@@ -48,20 +47,27 @@ public class ParallelStreamTest {
                                 .boxed()
                                 .filter(Prime::isPrime)
                                 .collect(Collectors.toList())
-                ).get();
+        ).get();
 
         assertThat(primes.size()).isEqualTo(78498);
     }
 
-
     public static class Prime {
-        public static boolean isPrime(int candidate) {
-            for (int i = 2; i * i <= candidate; ++i) {
-                if (candidate % i == 0) {
-                    return false;
+        public static boolean isPrime(int n) {
+            if (n <= 3) {
+                return n > 1;
+            } else if (n % 2 == 0 || n % 3 == 0) {
+                return false;
+            } else {
+                double sqrtN = Math.floor(Math.sqrt(n));
+                for (int i = 5; i <= sqrtN; i += 6) {
+                    if (n % i == 0 || n % (i + 2) == 0) {
+                        return false;
+                    }
                 }
+                return true;
             }
-            return true;
+
         }
     }
 }
