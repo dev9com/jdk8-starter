@@ -3,7 +3,7 @@ package com.dev9.jdk8.functionalinterface;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculationTest {
 
@@ -65,5 +65,13 @@ public class CalculationTest {
         double squareRootResult = squareRootCalculation.solve(TEST_VALUE);
 
         assertThat(squareRootResult).isEqualTo(randomResult);
+    }
+
+    @Test
+    public void calculationDefinedInLambda(){
+
+        Calculation lambdaCalculation = (int i) -> i + 5;
+
+        assertThat(lambdaCalculation.calculate(5)).isEqualTo(10);
     }
 }
